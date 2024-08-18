@@ -1,0 +1,133 @@
+<div class="d-flex flex-column vh-100">
+    <app-header></app-header>
+    <div class="d-flex flex-grow-1">
+        <div class="sidebar-container bg-white">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="content-container bg-light flex-grow-1">
+            <div class="page-wrapper rounded p-3">
+                <div class="page-breadcrumb">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 col-8 align-self-center">
+                            <h3 class="page-title mb-0 p-0">Consultation Facture</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card bg-white shadow-sm">
+                                <div class="card-body">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb mb-0">
+                                            <li class="breadcrumb-item"><i class="fa fa-search"></i></li>
+                                            <li class="breadcrumb-item">Rechercher Facture</li>
+                                        </ol>
+                                    </nav>
+                                    <br>
+                                    <div class="d-flex flex-column align-items-start">
+                                        <label for="clientId" class="mb-2"><strong>Num Client:</strong></label>
+                                        <div class="input-group mb-2" style="max-width: 300px;">
+                                            <input [(ngModel)]="searchQuery" id="clientId" type="text" class="form-control" placeholder="Num du client...">
+                                        </div>
+                                        <div class="w-100 d-flex justify-content-end mb-2">
+                                            <button class="btn custom-btn" (click)="searchFactures()">Rechercher</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb mb-0">
+                                            <li class="breadcrumb-item"><i class="fa fa-file-contract"></i></li>
+                                            <li class="breadcrumb-item">Liste des Factures</li>
+                                        </ol>
+                                    </nav>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" *ngIf="factures && factures.length > 0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Num Facture</th>
+                                                    <th>Date Facture</th>
+                                                    <th>Montant</th>
+                                                    <th>Type</th>
+
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let facture of factures">
+                                                    <td>{{ facture.id }}</td>
+                                                    <td>{{ facture.dateFacture }}</td>
+                                                    <td>{{ facture.montant }}</td>
+                                                    <td>{{ facture.type }}</td>
+
+                                                    <td>
+                                                        <button class="btn btn-success" [disabled]="paymentStatus[facture.id] === 'paid'" (click)="openPaymentPanel(facture.id, paymentModal)">
+                              {{ paymentStatus[facture.id] === 'paid' ? 'Payé' : 'Payer' }}
+                            </button>
+                                                        <button *ngIf="paymentStatus[facture.id] === 'paid'" class="btn btn-dark ms-2" (click)="showPaymentDetails(facture.id, paymentDetailsModal)">
+                              Détails
+                            </button>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div *ngIf="!factures || factures.length === 0">
+                                        <p>Aucun facture trouvé pour ce client.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #paymentModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Paiement de la Facture</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="processPayment()">
+            <div class="form-group">
+                <label for="paymentAmount">Montant</label>
+                <input type="text" class="form-control" id="paymentAmount" [(ngModel)]="selectedFacture.montant" name="paymentAmount" readonly>
+            </div>
+            <div class="form-group">
+                <label for="paymentType">Type de paiement</label>
+                <select class="form-control" id="paymentType" [(ngModel)]="paymentType" name="paymentType">
+          <option value="cash">Espèces</option>
+          <option value="check">Chèque</option>
+          <option value="card">Carte</option>
+        </select>
+            </div>
+            <br> <br><br>
+            <button type="submit" class="btn custom-btn">Valider</button>
+        </form>
+    </div>
+</ng-template>
+
+
+
+<ng-template #paymentDetailsModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Détails de Paiement</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p><strong>Entreprise:</strong>
+            <img src="../../assets/Orange-logo.png" alt="" style="width: 50px; height: auto;">
+        </p>
+        <p><strong>Montant:</strong> {{ paymentDetails?.montant }}</p>
+        <p><strong>Type de paiement:</strong> {{ paymentDetails?.paymentType }}</p>
+        <p><strong>Date:</strong> {{ paymentDetails?.dateFacture }}</p>
+
+        <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-primary" (click)="downloadInvoice()">Télécharger la Facture</button>
+        </div>
+    </div>
+</ng-template>

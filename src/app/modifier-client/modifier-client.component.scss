@@ -1,0 +1,415 @@
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #202020;
+    color: #fff;
+    transition: all 0.3s;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+}
+
+#sidebar a {
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    color: #080808;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #e76b23;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mat-drawer {
+    width: 240px;
+    background: black;
+    color: white;
+    /* Texte en blanc par défaut */
+}
+
+.mat-drawer-container {
+    height: 100%;
+}
+
+
+/* Ajoutez ce fichier si ce n'est pas déjà fait pour personnaliser les styles globaux */
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+    height: 100%;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.sidebar-container {
+    width: 250px;
+    height: 100%;
+    /* Largeur fixe ou ajustable selon vos besoins */
+    background-color: #f8f9fa;
+    /* Couleur de fond pour la sidebar */
+}
+
+.content-container {
+    padding: 20px;
+    /* Marges internes pour le contenu principal */
+    overflow-y: auto;
+}
+
+.wrapper .navbar-dark .components a {
+    text-decoration: none;
+    /* Supprime le soulignement des liens */
+}
+
+.page-title {
+    color: #e76b23;
+    /* Couleur orange */
+    font-size: 24px;
+    /* Taille de police */
+    margin-bottom: 10px;
+    /* Espacement en bas */
+    border-bottom: 2px solid #e76b23;
+    /* Bordure orange en dessous du titre */
+    padding-bottom: 5px;
+    /* Espacement entre le titre et la bordure */
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.input-group {
+    max-width: 300px;
+}
+
+$primary-color: #e76b23;
+$button-padding: 10px 20px;
+$font-size: 16px;
+.btn-add {
+    display: inline-flex;
+    align-items: center;
+    padding: $button-padding;
+    font-size: $font-size;
+    color: #fff;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+    .icon {
+        margin-right: 8px;
+        font-size: 20px;
+    }
+    .text {
+        font-size: $font-size;
+    }
+}
+
+.container {
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+
+/*form {
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+}*/
+
+h1 {
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    margin-bottom: 30px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 0 4px 8px 0;
+}
+
+select {
+    padding: 6px;
+    height: 32px;
+    border-radius: 2px;
+}
+
+button {
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    background-color: #4bc970;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    margin-bottom: 10px;
+}
+
+a.article,
+a.article:hover {
+    background: #e78434 !important;
+    color: #fff !important;
+}
+
+fieldset {
+    margin-bottom: 30px;
+    border: none;
+}
+
+legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+label.light {
+    font-weight: 300;
+    display: inline;
+}
+
+.custom-btn {
+    background-color: #e76b23;
+    border-color: #e76b23;
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: #c5561b;
+    border-color: #c5561b;
+}
+
+.number {
+    background-color: #5fcf80;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+}
+
+//style pour le modal 
+.modal {
+    border-radius: 0px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.modal .logo a img {
+    width: 30px;
+}
+
+.modal .modal-content {
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+}
+
+.modal .modal-content .modal-body {
+    border-radius: 0px;
+    border-top: 4px solid #ed5107;
+    overflow: hidden;
+    background-color: #efefef;
+    padding-left: 0px;
+    padding-right: 0px;
+    -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
+}
+
+.modal .modal-content .modal-body h2 {
+    font-size: 18px;
+}
+
+.modal .modal-content .modal-body p {
+    color: #777;
+    font-size: 14px;
+}
+
+.modal .modal-content .modal-body h3 {
+    color: #000;
+    font-size: 22px;
+}
+
+.modal .modal-content .modal-body .close-btn {
+    color: #000;
+}
+
+.modal .modal-content .modal-body .promo-img {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+}
+
+.modal .cancel {
+    color: gray;
+    font-size: 14px;
+}
+
+.modal .btn-primary {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-control {
+    border: transparent;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.form-control:active,
+.form-control:focus,
+.form-control:hover {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    border-radius: 4px;
+    border: none;
+}
+
+.btn:active,
+.btn:focus {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.custom-select {
+    border: none;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.custom-select:active,
+.custom-select:focus,
+.custom-select:hover {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logo img {
+    width: 70px;
+}
+
+.custom-note {
+    color: #999;
+}
+
+.custom-note a {
+    color: #555;
+    font-weight: 900 !important;
+}

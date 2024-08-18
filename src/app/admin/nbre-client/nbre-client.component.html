@@ -1,0 +1,155 @@
+<div class="page-wrapper rounded p-3">
+  <div class="page-breadcrumb">
+    <div class="row align-items-center">
+      <div class="col-md-6 col-8 align-self-center">
+        <h3 class="page-title mb-0 p-0">Dashboard</h3>
+      </div>
+    </div>
+    <br /><br /><br />
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="content-card">
+          <div class="card-content">
+            <div class="card-header">
+              <p class="card-title">Clients</p>
+            </div>
+            <div class="card-body">
+              <h1 class="client-count">{{ clientCount }}</h1>
+              <i class="fa fa-users"></i>
+            </div>
+            <div class="card-footer">
+              <p-button
+                label="Voir plus "
+                [text]="true"
+                [plain]="true"
+                (onClick)="showDialog()"
+              />
+              <p-dialog
+                header="Clients"
+                [modal]="true"
+                [(visible)]="visible"
+                [style]="{ width: '50rem' }"
+                [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+                [maximizable]="true"
+              >
+                <p-table
+                  [value]="allClients"
+                  [tableStyle]="{ 'min-width': '50rem' }"
+                >
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>fistName</th>
+                      <th>lastName</th>
+                      <th>numero</th>
+                      <th>cin</th>
+                      <th>adresse</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-client>
+                    <tr>
+                      <td>{{ client.firstName }}</td>
+                      <td>{{ client.lastName }}</td>
+                      <td>{{ client.numTel }}</td>
+                      <td>{{ client.cin }}</td>
+                      <td>{{ client.adresse }}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </p-dialog>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="content-card">
+          <div class="card-content">
+            <div class="card-header">
+              <p class="card-title">Contrats</p>
+            </div>
+            <div class="card-body">
+              <h1 class="client-count">{{ contratCount }}</h1>
+              <i class="fa fa-file-contract"></i>
+            </div>
+            <div class="card-footer">
+              <p-button
+                label="Voir plus "
+                [text]="true"
+                [plain]="true"
+                (onClick)="showDialogContrats()"
+              />
+              <p-dialog
+                header="Contrats"
+                [modal]="true"
+                [(visible)]="visibleContrats"
+                [style]="{ width: '50rem' }"
+                [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+                [maximizable]="true"
+              >
+                <p-table
+                  [value]="allContrats"
+                  [tableStyle]="{ 'min-width': '50rem' }"
+                >
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Code Contrat</th>
+                      <th>Date Activation</th>
+                      <th>numAppel</th>
+                      <th>statut</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-contrat>
+                    <tr>
+                      <td>{{ contrat.codeContrat }}</td>
+                      <td>{{ contrat.dateActivation }}</td>
+                      <td>{{ contrat.numAppel }}</td>
+                      <td>{{ contrat.statut }}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </p-dialog>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="content-card">
+          <div class="card-content">
+            <div class="card-header">
+              <p class="card-title">Total Payment</p>
+            </div>
+            <div class="card-body">
+              <h1 class="client-count">{{ totalPaient }}</h1>
+              <i class="fa fa-file-contract"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="news-card">
+          <div class="card-content">
+            <div class="card-header">
+              <p class="card-title">News</p>
+            </div>
+            <div class="card-body">
+              <img src="assets/option2.jpg" alt="Clients" class="icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="news-card">
+          <div class="card-content">
+            <div class="card-header">
+              <p class="card-title">Nwes</p>
+            </div>
+            <div class="card-body">
+              <img src="assets/option1.jpg" alt="Clients" class="icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

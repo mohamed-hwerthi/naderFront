@@ -1,0 +1,103 @@
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.fixed-sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: calc(100vh - 60px);
+    z-index: 1000;
+}
+
+.content-container {
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #202020;
+    color: #fff;
+    transition: all 0.3s;
+    height: 100%;
+    position: fixed;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+}
+
+#sidebar a {
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    color: #080808;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #e76b23;
+}
+
+.page-title {
+    color: #e76b23;
+    /* Orange color */
+    font-size: 24px;
+    /* Font size */
+    margin-bottom: 10px;
+    /* Bottom spacing */
+    border-bottom: 2px solid #e76b23;
+    /* Orange border under the title */
+    padding-bottom: 5px;
+    /* Space between the title and the border */
+}
+
+.custom-btn {
+    background-color: #e76b23;
+    border-color: #e76b23;
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: #c5561b;
+    border-color: #c5561b;
+}
+
+.btn {
+    border-radius: 4px;
+    border: none;
+}
+
+.btn:active,
+.btn:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.input-group {
+    max-width: 300px;
+}

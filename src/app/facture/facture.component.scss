@@ -1,0 +1,213 @@
+/* sidebar.component.css */
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mat-drawer {
+    width: 240px;
+    background: black;
+    color: white;
+    /* Texte en blanc par défaut */
+}
+
+.mat-drawer-container {
+    height: 100%;
+}
+
+
+/* Ajoutez ce fichier si ce n'est pas déjà fait pour personnaliser les styles globaux */
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.sidebar-container {
+    width: 250px;
+    /* Largeur fixe ou ajustable selon vos besoins */
+    background-color: #f8f9fa;
+    /* Couleur de fond pour la sidebar */
+
+}
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.colorTab {
+  color: #212529; /* Bootstrap's default text color */
+}
+
+.content-container {
+    padding: 20px;
+    /* Marges internes pour le contenu principal */
+}
+
+.wrapper .navbar-dark .components a {
+    text-decoration: none;
+    /* Supprime le soulignement des liens */
+}
+
+.page-title {
+    color: #e76b23;
+    /* Couleur orange */
+    font-size: 24px;
+    /* Taille de police */
+    margin-bottom: 10px;
+    /* Espacement en bas */
+    border-bottom: 2px solid #e76b23;
+    /* Bordure orange en dessous du titre */
+    padding-bottom: 5px;
+    /* Espacement entre le titre et la bordure */
+}
+
+.custom-btn {
+    background-color: #e76b23;
+    border-color: #e76b23;
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: #c5561b;
+    border-color: #c5561b;
+}
+
+.payment-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1001;
+    /* Should be higher than the overlay */
+}
+
+.payment-panel h4 {
+    margin-top: 0;
+}
+
+.payment-panel button {
+    margin-top: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    /* Should be lower than the payment panel */
+    display: none;
+    /* Hidden by default */
+}
+
+.overlay.show {
+    display: block;
+}
+
+
+.logo-image {
+  width: 100px;
+  height: auto;
+}

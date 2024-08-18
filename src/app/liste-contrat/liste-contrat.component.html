@@ -1,0 +1,163 @@
+<div class="d-flex flex-column vh-100">
+    <app-header class="flex-shrink-0"></app-header>
+    <div class="d-flex flex-grow-1 overflow-hidden">
+        <div class="sidebar-container bg-white flex-shrink-0">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="content-container bg-light flex-grow-1 overflow-auto">
+            <div class="page-wrapper rounded p-3">
+                <div class="page-breadcrumb">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 col-8 align-self-center">
+                            <h3 class="page-title mb-0 p-0">Liste des Contrats</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tableau des contrats -->
+                <div class="container-fluid mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card bg-white shadow-sm">
+                                <div class="card-body">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb mb-0">
+                                            <li class="breadcrumb-item">
+                                                <i class="fa fa-filter"></i>
+                                            </li>
+                                            <li class="breadcrumb-item d-flex align-items-center">
+                                                Filtrer les contrats :
+                                                <!-- Boutons Radio -->
+                                                <div class="ms-3">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="status" id="active" value="active" [(ngModel)]="selectedStatus">
+                                                        <label class="form-check-label" for="active">
+                                                            Actif
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="status" id="inactive" value="inactive" [(ngModel)]="selectedStatus">
+                                                        <label class="form-check-label" for="inactive">
+                                                            Désactivé
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" *ngIf="contrats && contrats.length > 0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Code Contrat</th>
+                                                    <th>Date Activation</th>
+                                                    <th>Statut</th>
+                                                    <th>Num Appel</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let contrat of contrats">
+                                                    <td>
+                                                        <a [routerLink]="['/promotions', contrat.codeContrat]">
+                                                            {{ contrat.codeContrat }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ contrat.dateActivation | date }}</td>
+                                                    <td>{{ contrat.statut }}</td>
+                                                    <td>{{ contrat.numAppel }}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary btn-sm" (click)="openEditModal(contrat, editeModalContent)">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm ms-2" (click)="openDeleteModal(contrat, deleteModalContent)">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <button class="btn btn-secondary btn-sm ms-2" (click)="openArchiveModal(contrat, archiveModalContent)">
+                                                            <i class="fa fa-archive"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div *ngIf="!contrats || contrats.length === 0">
+                                            <p>Aucun contrat trouvé.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #deleteModalContent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"><b>Supprimer contrat</b></h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir supprimer ce contrat ? Cette action est irréversible.</p>
+        <form>
+            <p><strong>Code Contrat:</strong> {{ selectedContrat?.codeContrat }}</p>
+            <div class="form-group d-flex align-items-center">
+                <button type="button" class="btn btn-danger" (click)="deleteContrat()">Supprimer</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+
+
+<ng-template #editeModalContent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"><b>Modifier contrat</b></h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="editContractForm" (ngSubmit)="updateContract(modal)">
+            <div class="form-group">
+                <label for="dateact">Date d'activation</label>
+                <input type="date" class="form-control" formControlName="date_activation" id="dateact">
+            </div>
+            <div class="form-group">
+                <label for="statut">Statut</label>
+                <input type="text" class="form-control" formControlName="statut" id="statut">
+            </div>
+            <div class="form-group">
+                <label for="numAppel">Numéro Appel</label>
+                <input type="text" class="form-control" formControlName="numAppel" id="numAppel">
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <button type="submit" class="btn btn-primary mr-3 px-5" [disabled]="editContractForm.invalid">Modifier</button>
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Annuler</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+
+<!-- Archive Modal Template -->
+<ng-template #archiveModalContent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"><b>Archiver le contrat</b></h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir archiver ce contrat?</p>
+        <form>
+
+            <p><strong>Code Contrat:</strong> {{ selectedContrat?.codeContrat }}</p>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">Archiver</button>
+    </div>
+</ng-template>

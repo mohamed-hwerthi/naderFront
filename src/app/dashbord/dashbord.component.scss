@@ -1,0 +1,149 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mat-drawer {
+    width: 240px;
+    background: black;
+    color: white;
+    /* Texte en blanc par défaut */
+}
+
+.mat-drawer-container {
+    height: 100%;
+}
+
+
+/* Ajoutez ce fichier si ce n'est pas déjà fait pour personnaliser les styles globaux */
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.sidebar-container {
+    width: 250px;
+    /* Largeur fixe ou ajustable selon vos besoins */
+    background-color: #f8f9fa;
+    /* Couleur de fond pour la sidebar */
+}
+
+.content-container {
+    padding: 20px;
+    /* Marges internes pour le contenu principal */
+}
+
+
+/* Style pour le wrapper du dashboard */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+/* Style pour l'en-tête */
+
+header {
+    flex: 0 0 auto;
+    /* Ne pas s'étendre, garder sa taille d'origine */
+    width: 100%;
+    z-index: 1000;
+}
+
+
+/* Style pour le wrapper du contenu principal */
+
+.main-content {
+    display: flex;
+    flex: 1;
+    /* Prend tout l'espace restant */
+    overflow: hidden;
+}
+
+
+/* Style pour la sidebar */
+
+#sidebar-wrapper {
+    flex: 0 0 250px;
+    /* Largeur fixe pour la sidebar */
+    height: 100%;
+    /* Prend toute la hauteur de l'écran */
+    background-color: #222;
+    color: #fff;
+    overflow-y: auto;
+    /* Ajoute un défilement si le contenu dépasse */
+}
+
+
+/* Style pour le contenu principal */
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    /* Ajoute un défilement si le contenu dépasse */
+}
+
+/////////
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mat-drawer {
+    width: 240px;
+    background: black;
+    color: white;
+    /* Texte en blanc par défaut */
+}
+
+.mat-drawer-container {
+    height: 100%;
+}
+
+
+/* Ajoutez ce fichier si ce n'est pas déjà fait pour personnaliser les styles globaux */
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.sidebar-container {
+    width: 250px;
+    /* Largeur fixe ou ajustable selon vos besoins */
+    background-color: #f8f9fa;
+    /* Couleur de fond pour la sidebar */
+}
+
+.content-container {
+    padding: 20px;
+    /* Marges internes pour le contenu principal */
+}

@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(14, 14, 14);
+    color: white;
+    padding: 10px 20px;
+}
+
+.app-name {
+    font-size: 1.2em;
+}
+
+.login-button {
+    background-color: #ff6a00;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.login-button:hover {
+    background-color: #fdfdfd;
+    color: rgb(0, 0, 0);
+}
+
+nav {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+:host {
+    display: block;
+    margin-bottom: 0;
+}

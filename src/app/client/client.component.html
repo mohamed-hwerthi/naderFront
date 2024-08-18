@@ -1,0 +1,192 @@
+<div class="d-flex flex-column vh-100">
+    <app-header class="fixed-header"></app-header>
+    <div class="d-flex flex-grow-1">
+        <app-sidebar class="fixed-sidebar"></app-sidebar>
+        <div class="content-container bg-light flex-grow-1">
+            <div class="page-wrapper rounded p-3">
+                <div class="page-breadcrumb">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="d-flex flex-column align-items-start">
+                                <h3 class="page-title mb-0 p-0">Consultation Client</h3>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid mt-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card bg-white shadow-sm">
+                                        <div class="card-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <nav aria-label="breadcrumb">
+                                                        <ol class="breadcrumb mb-0">
+                                                            <li class="breadcrumb-item">
+                                                                <i class="fa fa-search"></i>
+                                                            </li>
+                                                            <li class="breadcrumb-item">Rechercher Client</li>
+                                                        </ol>
+                                                    </nav>
+                                                    <br>
+                                                    <div class="d-flex flex-column align-items-start">
+                                                        <label for="clientNum" class="mb-2"><strong>Client:</strong></label>
+                                                        <div class="input-group mb-2" style="max-width: 300px;">
+                                                            <input [(ngModel)]="searchQuery" id="clientNum" type="text" class="form-control" placeholder="Num du client...">
+                                                        </div>
+                                                        <div class="w-100 d-flex justify-content-end mb-2">
+                                                            <button class="btn custom-btn" (click)="searchClients()">Rechercher</button>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-xl-12" *ngIf="client">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Détails du Client</h5>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p class="card-text"><strong>First Name:</strong> {{ client.firstName }}</p>
+                                                                        <p class="card-text"><strong>Last Name:</strong> {{ client.lastName }}</p>
+                                                                        <p class="card-text"><strong>CIN:</strong> {{ client.cin }}</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p class="card-text"><strong>Num Tel:</strong> {{ client.numTel }}</p>
+                                                                        <p class="card-text"><strong>Adresse:</strong> {{ client.adresse }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex justify-content-end mb-3">
+                                                                    <button class="btn btn-dark btn-sm" (click)="navigateToModifClient(client.id)">
+                                                                        <i class="fa fa-edit"></i> Modifier
+                                                                      </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br> <br>
+                                                        <nav aria-label="breadcrumb">
+                                                            <ol class="breadcrumb mb-0">
+                                                                <li class="breadcrumb-item">
+                                                                    <i class="fa fa-file-contract"></i>
+                                                                </li>
+                                                                <li class="breadcrumb-item">Liste des contrats</li>
+                                                            </ol>
+                                                        </nav>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped" *ngIf="client && client.contrats && client.contrats.length > 0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Code</th>
+                                                                        <th>Date Activation</th>
+                                                                        <th>Statut</th>
+                                                                        <th>Num Appel</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr *ngFor="let contrat of client.contrats">
+                                                                        <td><a [routerLink]="['/promotions', contrat.codeContrat]">{{ contrat.codeContrat }}</a></td>
+                                                                        <td>{{ contrat.dateActivation | date }}</td>
+                                                                        <td>{{ contrat.statut }}</td>
+                                                                        <td>{{ contrat.numAppel }}</td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal" (click)="openDeleteModal(contrat)"><i class="fa fa-edit"></i></button>
+                                                                            <button class="btn btn-danger btn-sm ml-2" data-toggle="modal" data-target="#deleteModal">
+                                                                                <i class="fa fa-trash"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div *ngIf="client && client.contrats && client.contrats.length === 0">
+                                                                <p>Aucun contrat trouvé pour ce client.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="!client">
+                                                        <p>Aucun client trouvé.</p>
+                                                    </div>
+                                                    <br><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Page Content -->
+                    </div>
+                    <!-- End Container fluid -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--model de modification contrat-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-md  modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-body py-0">
+                    <div class="d-flex main-content">
+                        <div class="content-text p-4">
+                            <h3>Modifier Contrat</h3>
+                            <form (ngSubmit)="updateContract()">
+                                <div class="form-group">
+                                    <label for="dateact">Date d'activation</label>
+                                    <input type="date" class="form-control" [(ngModel)]="contratDetails.dateActivation" name="date_activation">
+                                </div>
+                                <div class="form-group">
+                                    <label for="statut">Statut</label>
+                                    <input type="text" class="form-control" [(ngModel)]="contratDetails.statut" name="statut">
+                                </div>
+                                <div class="form-group">
+                                    <label for="numAppel">Numéro Appel</label>
+                                    <input type="text" class="form-control" [(ngModel)]="contratDetails.numAppel" name="numAppel">
+                                </div>
+                                <div class="form-group d-flex align-items-center">
+                                    <button type="submit" class="btn btn-primary mr-3 px-5">Modifier</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal supprimer contrat-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-md  modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-body py-0">
+                    <div class="d-flex main-content">
+                        <div class="content-text p-4">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            <h3>Supprimer Contrat</h3>
+
+                            <p>Êtes-vous sûr de vouloir supprimer ce contrat ? Cette action est irréversible.</p>
+
+                            <form>
+
+                                <p><strong>Code Contrat:</strong> {{ selectedContrat?.codeContrat }}</p>
+                                <!--<p><strong>Date Activation:</strong> {{ selectedContrat?.date_activation | date }}</p>
+                                <p><strong>Statut:</strong> {{ selectedContrat?.statut }}</p>
+                                <p><strong>Numéro d'Appel:</strong> {{ selectedContrat?.num_appel }}</p>
+                            -->
+                                <div class="form-group d-flex align-items-center">
+                                    <button type="button" class="btn btn-danger" (click)="deleteContract()">Supprimer</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+/* sidebar.component.css */
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #202020;
+    color: #fff;
+    transition: all 0.3s;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+}
+
+#sidebar a {
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    color: #080808;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #e76b23;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mat-drawer {
+    width: 240px;
+    background: black;
+    color: white;
+    /* Texte en blanc par défaut */
+}
+
+.mat-drawer-container {
+    height: 100%;
+}
+
+
+/* Ajoutez ce fichier si ce n'est pas déjà fait pour personnaliser les styles globaux */
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+    height: 100%;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.sidebar-container {
+    width: 250px;
+    height: 100%;
+    /* Largeur fixe ou ajustable selon vos besoins */
+    background-color: #f8f9fa;
+    /* Couleur de fond pour la sidebar */
+}
+
+.content-container {
+    padding: 20px;
+    /* Marges internes pour le contenu principal */
+    overflow-y: auto;
+}
+
+.wrapper .navbar-dark .components a {
+    text-decoration: none;
+    /* Supprime le soulignement des liens */
+}
+
+.page-title {
+    color: #e76b23;
+    /* Couleur orange */
+    font-size: 24px;
+    /* Taille de police */
+    margin-bottom: 10px;
+    /* Espacement en bas */
+    border-bottom: 2px solid #e76b23;
+    /* Bordure orange en dessous du titre */
+    padding-bottom: 5px;
+    /* Espacement entre le titre et la bordure */
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.input-group {
+    max-width: 300px;
+}
+
+.custom-btn {
+    background-color: #e76b23;
+    border-color: #e76b23;
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: #c5561b;
+    border-color: #c5561b;
+}
+
+.img-responsive {
+    height: 100px;
+    width: 100px;
+}

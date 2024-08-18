@@ -1,0 +1,33 @@
+<div class="d-flex flex-column vh-100">
+    <app-header></app-header>
+    <div class="d-flex flex-grow-1">
+        <div class="sidebar-container bg-white">
+            <div class="wrapper">
+                <!-- Sidebar  -->
+                <nav id="sidebar" class="navbar-dark bg-dark">
+                    <ul class="list-unstyled components">
+                        <li>
+                            <a [routerLink]="['/admin/nbreClient']" routerLinkActive="active"><span class="fa fa-home mr-3"></span>Dashboard</a>
+                        </li>
+
+
+                        <li>
+                            <a [routerLink]="['/admin/nbreContrat']" routerLinkActive="active"><span class="fa fa-tags mr-3"></span>Promotions</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/admin/montant']" routerLinkActive="active"><span class="fa fa-history mr-3"></span>Historique</a>
+
+                        </li>
+
+                    </ul>
+
+
+                </nav>
+            </div>
+
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
